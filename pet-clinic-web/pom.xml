@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.burntcity</groupId>
 		<artifactId>pet-clinic</artifactId>
-		<version>0.0.2-SNAPSHOT</version>
+		<version>0.0.2</version>
 	</parent>
 	<artifactId>pet-clinic-web</artifactId>
 	<packaging>pom</packaging>
@@ -13,7 +13,7 @@
 		<dependency>
 			<artifactId>pet-clinic-data</artifactId>
 			<groupId>com.burntcity</groupId>
-			<version>0.0.2-SNAPSHOT</version>
+			<version>0.0.2</version>
 		</dependency>
 
 		<dependency>
