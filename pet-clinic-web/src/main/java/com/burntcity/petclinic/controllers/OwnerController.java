@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.burntcity.petclinic.services.OwnerService;
 
 @Controller
-@RequestMapping("owner")
+@RequestMapping("owners")
 public class OwnerController {
 
 	private final OwnerService service;
