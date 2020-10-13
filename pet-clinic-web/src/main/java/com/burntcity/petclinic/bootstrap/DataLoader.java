@@ -7,8 +7,6 @@ import com.burntcity.petclinic.model.Owner;
 import com.burntcity.petclinic.model.Vet;
 import com.burntcity.petclinic.services.OwnerService;
 import com.burntcity.petclinic.services.VetService;
-import com.burntcity.petclinic.services.map.OwnerMapService;
-import com.burntcity.petclinic.services.map.VetMapService;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -16,9 +14,9 @@ public class DataLoader implements CommandLineRunner {
 	private final OwnerService ownerService;
 	private final VetService vetService;
 
-	public DataLoader() {
-		ownerService = new OwnerMapService();
-		vetService = new VetMapService();
+	public DataLoader(OwnerService ownerService, VetService vetService) {
+		this.ownerService = ownerService;
+		this.vetService = vetService;
 	}
 
 	@Override
@@ -66,6 +64,8 @@ public class DataLoader implements CommandLineRunner {
 		Vet vet2 = new Vet();
 		vet2.setFirstName("Jessie");
 		//vet2.getSpecialities().add(savedSurgery);
+		
+		vetService.save(vet2);
 		System.out.println("Loaded Vets....");
 	}
 }

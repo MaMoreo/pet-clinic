@@ -2,9 +2,12 @@ package com.burntcity.petclinic.services.map;
 
 import java.util.Set;
 
+import org.springframework.stereotype.Service;
+
 import com.burntcity.petclinic.model.Vet;
 import com.burntcity.petclinic.services.VetService;
 
+@Service
 public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
 
 	@Override
@@ -19,16 +22,16 @@ public class VetMapService extends AbstractMapService<Vet, Long> implements VetS
 
 	@Override
 	public Vet save(Vet object) {
-		return  super.save(object.getId(), object);
+		return super.save(object.getId(), object);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		 super.deleteById(id);
+		super.deleteById(id);
 	}
 
 	@Override
 	public void delete(Vet object) {
-		 super.delete(object);
+		super.delete(object);
 	}
 }
