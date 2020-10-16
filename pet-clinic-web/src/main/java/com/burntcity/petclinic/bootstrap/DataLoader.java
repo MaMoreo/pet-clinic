@@ -31,6 +31,14 @@ public class DataLoader implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
+		PetType petType = new PetType();
+		petType.setName("Dog");
+		PetType savedDogType = petTypeService.save(petType); // save add's the ID !!
+		
+		PetType cat = new PetType();
+		cat.setName("Cat");
+		PetType savedCatPetType = petTypeService.save(cat);
+		
 		Owner owner1 = new Owner();
 		owner1.setFirstName("Bruce");
 		owner1.setSecondName("Wayne");
@@ -58,9 +66,7 @@ public class DataLoader implements CommandLineRunner {
 
 		System.out.println("Loaded Vets....");
 		
-		PetType petType = new PetType();
-		petType.setId(1L);
-		petType.setName("dog");
+		
 		
 		System.out.println("Loaded PetTypes....");
 		
