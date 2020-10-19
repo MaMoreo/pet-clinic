@@ -1,16 +1,18 @@
 package com.burntcity.petclinic.bootstrap;
 
+import java.time.LocalDate;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.burntcity.petclinic.model.Owner;
+import com.burntcity.petclinic.model.Pet;
 import com.burntcity.petclinic.model.PetType;
 import com.burntcity.petclinic.model.Vet;
-import com.burntcity.petclinic.services.CrudService;
 import com.burntcity.petclinic.services.OwnerService;
 import com.burntcity.petclinic.services.PetTypeService;
 import com.burntcity.petclinic.services.VetService;
-import com.burntcity.petclinic.services.map.PetTypeMapService;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -31,24 +33,50 @@ public class DataLoader implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		PetType petType = new PetType();
-		petType.setName("Dog");
-		PetType savedDogType = petTypeService.save(petType); // save add's the ID !!
+		PetType dog = new PetType();
+		dog.setName("Dog");
+		PetType savedDogType = petTypeService.save(dog); // save add's the ID !!
 		
+		Owner batman = new Owner();
+		batman.setFirstName("Bruce");
+		batman.setSecondName("Wayne");
+		batman.setAddress("Wayne Manor");
+		batman.setCity("Gotham City");
+		batman.setTelephone("000-Bat-Signal");
+	
+		Pet batDog = new Pet();
+		batDog.setPetType(savedDogType);
+		batDog.setOwner(batman);
+		batDog.setBirthDate(LocalDate.now());
+		batDog.setName("BatDog");
+		
+		batman.getPets().add(batDog);
+		
+		ownerService.save(batman);
+
+		/*********************************************/
 		PetType cat = new PetType();
 		cat.setName("Cat");
 		PetType savedCatPetType = petTypeService.save(cat);
 		
-		Owner owner1 = new Owner();
-		owner1.setFirstName("Bruce");
-		owner1.setSecondName("Wayne");
-		ownerService.save(owner1);
-
-		Owner owner2 = new Owner();
-		owner2.setFirstName("Peter");
-		owner2.setSecondName("Parker");
-		ownerService.save(owner2);
+		Owner spiderman = new Owner();
+		spiderman.setFirstName("Peter");
+		spiderman.setSecondName("Parker");
+		spiderman.setAddress("May's House");
+		spiderman.setCity("New York");
+		spiderman.setTelephone("123-Spider-Sense");
 		
+		Pet spiderCat = new Pet();
+		spiderCat.setPetType(savedCatPetType);
+		spiderCat.setOwner(spiderman);
+		spiderCat.setBirthDate(LocalDate.now());
+		spiderCat.setName("Felicia");
+		
+		spiderman.getPets().add(spiderCat);
+		ownerService.save(spiderman);
+		
+		
+		/*********************************************/
 		Owner owner3 = new Owner();
 		owner3.setFirstName("Steve");
 		ownerService.save(owner3);
