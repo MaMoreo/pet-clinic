@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.burntcity.petclinic.services.VetService;
 
 @Controller
-@RequestMapping("vets")
+//@RequestMapping("vets")
 public class VetController {
 
 	private final VetService service;
@@ -17,9 +17,15 @@ public class VetController {
 		this.service = service;
 	}
 
-	@RequestMapping({ "", "/", "index", "index.html" })
+	@RequestMapping({"vets/", "vets/index", "vets/index.html", "vets.html" })
 	public String index(Model model) {
 		model.addAttribute("vets", service.findAll());
 		return "vets/index.html";
 	}
+	
+	/*@RequestMapping("vets.html")
+	public String index2(Model model) {
+		model.addAttribute("vets", service.findAll());
+		return "vets/index.html";
+	}*/
 }
