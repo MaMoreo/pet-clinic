@@ -13,4 +13,8 @@ import lombok.Setter;
 public class Speciality extends BaseEntity {
 	
 	private String description;
+	
+	// MIKE: if you want to create this as a Bidirecctional mapping you need
+	//@ManyToMany(mappedBy = "specialities")
+	//private Set<Vet> vets = new HashSet<>();
 }
