@@ -60,7 +60,7 @@ public class DataLoader implements CommandLineRunner {
 
 		Owner batman = new Owner();
 		batman.setFirstName("Bruce");
-		batman.setSecondName("Wayne");
+		batman.setLastName("Wayne");
 		batman.setAddress("Wayne Manor");
 		batman.setCity("Gotham City");
 		batman.setTelephone("000-Bat-Signal");
@@ -82,7 +82,7 @@ public class DataLoader implements CommandLineRunner {
 
 		Owner spiderman = new Owner();
 		spiderman.setFirstName("Peter");
-		spiderman.setSecondName("Parker");
+		spiderman.setLastName("Parker");
 		spiderman.setAddress("May's House");
 		spiderman.setCity("New York");
 		spiderman.setTelephone("123-Spider-Sense");
@@ -110,7 +110,7 @@ public class DataLoader implements CommandLineRunner {
 
 		Vet vet2 = new Vet();
 		vet2.setFirstName("Jessie");
-		vet2.setSecondName("James");
+		vet2.setLastName("James");
 		vetService.save(vet2);
 		vet2.getSpecialities().add(savedSurgery);
 
