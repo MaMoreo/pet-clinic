@@ -10,10 +10,12 @@ import com.burntcity.petclinic.model.Pet;
 import com.burntcity.petclinic.model.PetType;
 import com.burntcity.petclinic.model.Speciality;
 import com.burntcity.petclinic.model.Vet;
+import com.burntcity.petclinic.model.Visit;
 import com.burntcity.petclinic.services.OwnerService;
 import com.burntcity.petclinic.services.PetTypeService;
 import com.burntcity.petclinic.services.SpecialtyService;
 import com.burntcity.petclinic.services.VetService;
+import com.burntcity.petclinic.services.VisitService;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -22,21 +24,23 @@ public class DataLoader implements CommandLineRunner {
 	private final VetService vetService;
 	private final PetTypeService petTypeService;
 	private final SpecialtyService specialitiesService;
+	private final VisitService visitService;
 
 	public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
-			SpecialtyService specialitiesService) {
+			SpecialtyService specialitiesService, VisitService visitService) {
 		this.ownerService = ownerService;
 		this.vetService = vetService;
 		this.petTypeService = petTypeService;
 		this.specialitiesService = specialitiesService;
+		this.visitService = visitService;
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
 
 		int count = petTypeService.findAll().size();
-		
-		if(count == 0)
+
+		if (count == 0)
 			loadData();
 
 	}
@@ -49,7 +53,7 @@ public class DataLoader implements CommandLineRunner {
 		Speciality radiology = new Speciality();
 		radiology.setDescription("radiology");
 		Speciality savedRadioly = specialitiesService.save(radiology);
-		
+
 		Speciality surgery = new Speciality();
 		surgery.setDescription("surgery");
 		Speciality savedSurgery = specialitiesService.save(surgery);
@@ -75,6 +79,12 @@ public class DataLoader implements CommandLineRunner {
 
 		ownerService.save(batman);
 
+		Visit visitForBatDog = new Visit();
+		visitForBatDog.setPet(batDog);
+		visitForBatDog.setDate(LocalDate.now());
+		visitForBatDog.setDescription("Ate too much");
+		visitService.save(visitForBatDog);
+		
 		/*********************************************/
 		PetType cat = new PetType();
 		cat.setName("Cat");
@@ -99,6 +109,7 @@ public class DataLoader implements CommandLineRunner {
 		/*********************************************/
 		Owner owner3 = new Owner();
 		owner3.setFirstName("Steve");
+		owner3.setLastName("Rogers");
 		ownerService.save(owner3);
 
 		System.out.println("Loaded Owners....");
