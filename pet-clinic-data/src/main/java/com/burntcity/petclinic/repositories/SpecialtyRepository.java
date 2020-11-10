@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.burntcity.petclinic.model.Speciality;
 
-public interface SpecialTyRepository extends CrudRepository<Speciality, Long> {
+public interface SpecialtyRepository extends CrudRepository<Speciality, Long> {
 
 }
