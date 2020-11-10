@@ -1,5 +1,6 @@
 package com.burntcity.petclinic.services.map;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import com.burntcity.petclinic.model.Owner;
@@ -9,6 +10,7 @@ import com.burntcity.petclinic.services.PetService;
 import com.burntcity.petclinic.services.PetTypeService;
 
 @Service
+@Profile({"default", "map"})
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
 	private final PetService petService;
@@ -51,5 +53,4 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
 
 		return super.save(owner);
 	}
-
 }
