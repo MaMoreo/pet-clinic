@@ -12,11 +12,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "pets")
 public class Pet extends BaseEntity {
@@ -36,4 +42,13 @@ public class Pet extends BaseEntity {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")   // this is NOT a column in the DB
 	private Set<Visit> visits = new HashSet<>();
 
+	@Builder
+	public Pet(Long id, String name, PetType petType, Owner owner, LocalDate birthDate, Set<Visit> visits) {
+		super(id);
+		this.name = name;
+		this.petType = petType;
+		this.owner = owner;
+		this.birthDate = birthDate;
+		this.visits = visits;
+	}
 }

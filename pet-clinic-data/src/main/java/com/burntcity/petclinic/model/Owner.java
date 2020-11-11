@@ -9,11 +9,15 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 @Getter 
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "owners") // name the Table
 public class Owner extends Person {
@@ -29,4 +33,16 @@ public class Owner extends Person {
 	//CASCADE.ALL = if I delete Owner, pets will be deleted too
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")  
 	private Set<Pet> pets = new HashSet<>();
+
+	@Builder
+	public Owner(String firstName, String lastName, 
+			String address, String city, String telephone, Set<Pet> pets) {
+		super(firstName, lastName);
+		this.address = address;
+		this.city = city;
+		this.telephone = telephone;
+		this.pets = pets;
+	}
+	
+	
 }

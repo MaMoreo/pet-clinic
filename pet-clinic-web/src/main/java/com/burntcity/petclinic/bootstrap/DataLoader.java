@@ -84,6 +84,14 @@ public class DataLoader implements CommandLineRunner {
 		visitForBatDog.setDate(LocalDate.now());
 		visitForBatDog.setDescription("Ate too much");
 		visitService.save(visitForBatDog);
+
+		/************/
+		Owner slopez = Owner.builder().firstName("Juan")
+				.lastName("Lopez")
+				.address("Carrier Editorial B").city("Tarcelona").build();
+		ownerService.save(slopez);
+
+		
 		
 		/*********************************************/
 		PetType cat = new PetType();
