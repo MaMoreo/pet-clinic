@@ -7,6 +7,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -31,26 +32,31 @@ class OwnerSDJPaServiceTest {
 	}
 
 	@Test
+	@Disabled
 	void testFindAll() {
 		fail("Not yet implemented");
 	}
 
 	@Test
+	@Disabled
 	void testFindById() {
 		fail("Not yet implemented");
 	}
 
 	@Test
+	@Disabled
 	void testSave() {
 		fail("Not yet implemented");
 	}
 
 	@Test
+	@Disabled
 	void testDelete() {
 		fail("Not yet implemented");
 	}
 
 	@Test
+	@Disabled
 	void testDeleteById() {
 		fail("Not yet implemented");
 	}
@@ -63,6 +69,6 @@ class OwnerSDJPaServiceTest {
 		
 		assertEquals("Wayne", bruce.getLastName());
 		// default is 1 times
-		verify(ownerService.findByLastName(any())); 
+		verify(ownerRepository).findByLastName(any()); 
 	}
 }
